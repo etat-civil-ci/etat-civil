@@ -79,12 +79,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="../assets/vendor/swiper/swiper-bundle.min.css">
 
 	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-DEXFC3C67M"></script>
@@ -108,8 +108,8 @@
 		<div class="container">
 			<!-- Logo START -->
 			<a class="navbar-brand me-0" href="">
-				<img class="light-mode-item navbar-brand-item" src="assets/images/image.png" alt="logo">
-				<img class="dark-mode-item navbar-brand-item bg-white" src="assets/images/image.png" alt="logo">
+				<img class="light-mode-item navbar-brand-item" src="../assets/images/image.png" alt="logo">
+				<img class="dark-mode-item navbar-brand-item bg-white" src="../assets/images/image.png" alt="logo">
 			</a>
 			<!-- Logo END -->
 
@@ -442,14 +442,14 @@ Footer END -->
 <div class="back-top"></div>
 
 <!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!--Vendors-->
-<script src="assets/vendor/ityped/index.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../assets/vendor/ityped/index.js"></script>
+<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
 
 <!-- Theme Functions -->
-<script src="assets/js/functions.js"></script>
+<script src="../assets/js/functions.js"></script>
 
 </body>
 </html>

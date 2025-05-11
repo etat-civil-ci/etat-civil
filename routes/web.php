@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ActeNaissanceController;
+use App\Http\Controllers\DemandeController;
+use App\Http\Controllers\PaiementController;
+use App\Http\Controllers\ActeDecesController;
+use App\Http\Controllers\ActeMariageController;
 
 // Routes principales
 Route::get('/', [App\Http\Controllers\FrontController::class, 'index'])->name('home');
@@ -46,6 +51,54 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('/dashboard', [App\Http\Controllers\FrontController::class, 'dashboard'])->name('dashboard');
     Route::get('/listeactemariage', [App\Http\Controllers\FrontController::class, 'listeactemariage'])->name('listeactemariage');
-    Route::get('/listeactenaissance', [App\Http\Controllers\FrontController::class, 'listeactenaissance'])->name('listeactenaissance');
     Route::get('/listeactedeces', [App\Http\Controllers\FrontController::class, 'listeactedeces'])->name('listeactedeces');
+
+    //Route pour acte de naissance
+    Route::get('/demande/createactenaissance', [ActeNaissanceController::class, 'createactenaissance'])->name('createactenaissance');
+    Route::post('/createactenaissance', [ActeNaissanceController::class, 'store'])->name('createactenaissance.store');
+    Route::get('/api/localites/{typeId}', [ActeNaissanceController::class, 'getLocalites']);
+    Route::get('/listeactenaissance', [ActeNaissanceController::class, 'index'])->name('listeactenaissance');
+    Route::get('/actenaissance/{acteNaissance}', [ActeNaissanceController::class, 'show'])->name('actenaissance.show');
+    Route::get('/actenaissance/{acteNaissance}/edit', [ActeNaissanceController::class, 'edit'])->name('actenaissance.edit');
+    Route::put('/actenaissance/{acteNaissance}', [ActeNaissanceController::class, 'update'])->name('actenaissance.update');
+    Route::delete('/actenaissance/{acteNaissance}', [ActeNaissanceController::class, 'destroy'])->name('actenaissance.destroy');
+    Route::delete('/actenaissance/{acteNaissance}/document/{documentIndex}', [ActeNaissanceController::class, 'deleteDocument'])->name('actenaissance.deleteDocument')->middleware('auth');
+    Route::get('/demande/acte-naissance', function () { return view('frontend.demande.actenaissance');})->name('demandes.acte-naissance.create');
+    Route::post('/demande/acte-naissance', [DemandeController::class, 'storeActeNaissance'])->name('demandes.acte-naissance.store');
+    Route::get('/demande/acte-naissance/{acte}/details', [DemandeController::class, 'showActeDetails'])->name('demande.actenaissance.details');
+    Route::get('/demande/paiement/{demande_id}', [PaiementController::class, 'create'])->name('demandes.paiement.create');
+    Route::post('/demande/paiement', [PaiementController::class, 'store'])->name('demandes.paiement.store');
+
+    //Route pour acte de deces
+    Route::get('/demande/createactedeces', [ActeDecesController::class, 'createactedeces'])->name('createactedeces');
+    Route::post('/createactedeces', [ActeDecesController::class, 'store'])->name('createactedeces.store');
+    Route::get('/api/localites/{typeId}', [ActeDecesController::class, 'getLocalites']);
+    Route::get('/listeactedeces', [ActeDecesController::class, 'index'])->name('listeactedeces');
+    Route::get('/actedeces/{acteDeces}', [ActeDecesController::class, 'show'])->name('actedeces.show');
+    Route::get('/actedeces/{acteDeces}/edit', [ActeDecesController::class, 'edit'])->name('actedeces.edit');
+    Route::put('/actedeces/{acteDeces}', [ActeDecesController::class, 'update'])->name('actedeces.update');
+    Route::delete('/actedeces/{acteDeces}', [ActeDecesController::class, 'destroy'])->name('actedeces.destroy');
+    Route::delete('/actedeces/{acteDeces}/document/{documentIndex}', [ActeDecesController::class, 'deleteDocument'])->name('actedeces.deleteDocument')->middleware('auth');
+    Route::get('/demande/acte-deces', function () { return view('frontend.demande.actedeces');})->name('demandes.acte-deces.create');
+    Route::post('/demande/acte-deces', [DemandeController::class, 'storeActeDeces'])->name('demandes.acte-deces.store');
+    Route::get('/demande/acte-deces/{acte}/details', [DemandeController::class, 'showActeDetailsActeDeces'])->name('demande.actedeces.details');
+    Route::get('/demande/paiement/{demande_id}', [PaiementController::class, 'create'])->name('demandes.paiement.create');
+    Route::post('/demande/paiement', [PaiementController::class, 'store'])->name('demandes.paiement.store');
+
+
+    //Route pour acte de Mariage
+    Route::get('/demande/createactemariage', [ActeMariageController::class, 'createactemariage'])->name('createactemariage');
+    Route::post('/createactemariage', [ActeMariageController::class, 'store'])->name('createactemariage.store');
+    Route::get('/api/localites/{typeId}', [ActeMariageController::class, 'getLocalites']);
+    Route::get('/listeactemariage', [ActeMariageController::class, 'index'])->name('listeactemariage');
+    Route::get('/actemariage/{acteMariage}', [ActeMariageController::class, 'show'])->name('actemariage.show');
+    Route::get('/actemariage/{acteMariage}/edit', [ActeMariageController::class, 'edit'])->name('actemariage.edit');
+    Route::put('/actemariage/{acteMariage}', [ActeMariageController::class, 'update'])->name('actemariage.update');
+    Route::delete('/actemariage/{acteMariage}', [ActeMariageController::class, 'destroy'])->name('actemariage.destroy');
+    Route::delete('/actemariage/{acteMariage}/document/{documentIndex}', [ActeMariageController::class, 'deleteDocument'])->name('actemariage.deleteDocument')->middleware('auth');
+    Route::get('/demande/acte-mariage', function () { return view('frontend.demande.actemariage');})->name('demandes.acte-mariage.create');
+    Route::post('/demande/acte-mariage', [DemandeController::class, 'storeActeMariage'])->name('demandes.acte-mariage.store');
+    Route::get('/demande/acte-mariage/{acte}/details', [DemandeController::class, 'showActeDetailsActeMariage'])->name('demande.actemariage.details');
+    Route::get('/demande/paiement/{demande_id}', [PaiementController::class, 'create'])->name('demandes.paiement.create');
+    Route::post('/demande/paiement', [PaiementController::class, 'store'])->name('demandes.paiement.store');
 });

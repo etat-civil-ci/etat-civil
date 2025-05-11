@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('citoyens', function (Blueprint $table) {
+        Schema::create('download_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('demande_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('copies_downloaded')->default(0);
+            $table->timestamp('last_download_at')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('citoyens');
+        Schema::dropIfExists('download_histories');
     }
 };

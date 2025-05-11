@@ -61,7 +61,7 @@ About START -->
 
 				<!-- Button -->
 				<div class="text-center d-inline-block bg-dark rounded px-5 py-3 mt-4 mt-lg-5">
-					<span class="text-white">Avez vous déjà un acte de mariage ?</span> <a class="ms-2" href="{{ route('actemariage')}}">Nouvel acte<span class="bi-chevron-right small ms-1"></span></a>
+					<span class="text-white">Avez vous déjà un acte de mariage ?</span> <a class="ms-2" href="">Nouvel acte<span class="bi-chevron-right small ms-1"></span></a>
 				</div>
 			</div>
 		</div> <!-- Row END -->
