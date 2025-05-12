@@ -107,6 +107,8 @@
 						<h2 class="mb-0">Bienvenue</h2>
 						<p class="mb-0">Veuillez entrer vos identifiants pour vous connecter</p>
 						
+
+						{{Hash::make('1234')}}
 						@if(session('success'))
 							<div class="alert alert-success alert-dismissible fade show" role="alert">
 								{{ session('success') }}
@@ -125,6 +127,10 @@
 						<form method="POST" action="{{ route('login.authenticate') }}">
 							@csrf
 							<!-- Email -->
+
+							@if (Session::get('withErrors'))
+							<b>{{Session::get('withErrors')}}</b>
+							@endif
 							<div class="input-floating-label form-floating mb-4">
 								<input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="nom@exemple.com" value="{{ old('email') }}" required>
 								<label for="email">Adresse email</label>

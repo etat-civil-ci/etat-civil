@@ -48,7 +48,7 @@ Main hero START -->
 				</nav>
 			</div>
 			<!-- Title -->
-			<h1 class="h2 text-white">Crée Un Acte De Naissance</h1>
+			<h1 class="h2 text-white">Crée un acte de naissance</h1>
 		</div>
 
 <div class="container">
@@ -129,6 +129,24 @@ Main hero START -->
                                     </span>
                                 @enderror
                             </div>
+
+                                <!-- Heure de naissance-->
+                            <!-- <div class="col-md-6">
+                                <label for="heure_naissance" class="form-label">Heure de naissance*</label>
+                                <input type="time" class="form-control @error('lieu_naissance') is-invalid @enderror" 
+                                       id="heure_naissance" name="heure_naissance" value="{{ old('heure_naissance') }}" required>
+                                @error('heure_naissance')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div> -->
+
+
+
+
+
+
                             <div class="col-md-6">
                                 <label for="date_acte" class="form-label">Date de l'acte *</label>
                                 <input type="date" class="form-control @error('date_acte') is-invalid @enderror" 
@@ -142,24 +160,25 @@ Main hero START -->
                         </div>
 
                         <!-- Type de localité et localité -->
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="type_localite" class="form-label">Type de localité *</label>
-                                <select class="form-select @error('type_localite') is-invalid @enderror" 
-                                        id="type_localite" name="type_localite" required>
-                                    <option value="" disabled selected>Choisir...</option>
-                                    @foreach($typesLocalites as $type)
-                                        <option value="{{ $type->id }}" {{ old('type_localite') == $type->id ? 'selected' : '' }}>
-                                            {{ $type->nom }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('type_localite')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                        <label for="type_localite" class="form-label">Type de localité *</label>
+                        <select class="form-select @error('type_localite') is-invalid @enderror" 
+                                id="type_localite" name="type_localite" required>
+                            <option value="" disabled selected>Choisir...</option>
+                            @foreach($typesLocalites as $type)
+                                <option value="{{ $type->id }}" {{ old('type_localite') == $type->id ? 'selected' : '' }}>
+                                    {{ $type->nom }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('type_localite')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
                             <div class="col-md-6">
                                 <label for="localite_id" class="form-label">Localité *</label>
                                 <select class="form-select @error('localite_id') is-invalid @enderror" 
@@ -199,7 +218,7 @@ Main hero START -->
                         <!-- Informations sur les parents -->
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <h5>Informations sur le père</h5>
+                                <h5>Informations sur le père *</h5>
                                 <div class="mb-3">
                                     <label for="nom_pere" class="form-label">Nom</label>
                                     <input type="text" class="form-control @error('nom_pere') is-invalid @enderror" 

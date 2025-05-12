@@ -8,7 +8,7 @@
 				<div class="offcanvas-lg offcanvas-start h-100" tabindex="-1" id="offcanvasSidebar">
 					<!-- Offcanvas header -->
 					<div class="offcanvas-header bg-light">
-						<h5 class="offcanvas-title" id="offcanvasNavbarLabel">My profile</h5>
+						<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mon  profil</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasSidebar" aria-label="Close"></button>
 					</div>
 					<!-- Offcanvas body -->

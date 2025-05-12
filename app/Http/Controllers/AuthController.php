@@ -22,7 +22,8 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+        $credentials=$request->only(['email','password']);
+        if(Auth::attempt($credentials));
             $request->session()->regenerate();
 
             $user = Auth::user();
@@ -35,7 +36,8 @@ class AuthController extends Controller
             } else {
                 return redirect()->intended('/');
             }
-        }
+            
+        
 
         return back()->withErrors([
             'email' => 'Les identifiants fournis ne correspondent pas à nos enregistrements.',
@@ -57,31 +59,35 @@ class AuthController extends Controller
         return view('auth.sign-up');
     }
 
-    public function storeUser(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'date_naissance' => 'nullable|date',
-            'genre' => 'nullable|in:homme,femme,autre',
-            'contact' => 'nullable|string|max:255',
-        ]);
+public function storeUser(Request $request)
+{
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'date_naissance' => $request->date_naissance,
-            'genre' => $request->genre,
-            'contact' => $request->contact,
-            'role' => 'citoyen', // Valeur par défaut
-        ]);
+   
+
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:8|confirmed',
+        'date_naissance' => 'nullable|date',
+        'genre' => 'nullable|in:homme,femme,autre',
+        'contact' => 'nullable|string|max:255',
+    ]);
+
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'date_naissance' => $request->date_naissance,
+        'genre' => $request->genre,
+        'contact' => $request->contact,
+        'role' => 'citoyen', // Valeur par défaut
+    ]);
 
         event(new Registered($user));
 
-        return redirect()->route('login')->with('success', 'Compte créé avec succès ! Veuillez vous connecter.');
-    }
+    return redirect()->route('login')->with('success', 'Compte créé avec succès ! Veuillez vous connecter.');
+}
+
 
     public function forgotPassword()
     {

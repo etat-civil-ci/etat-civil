@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	
-	<title>Mizzle - Technology and Corporate Bootstrap Theme</title>
+	<title>Etat civil - En côte d'ivoire</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
