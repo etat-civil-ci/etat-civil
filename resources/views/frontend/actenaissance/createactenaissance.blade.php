@@ -48,7 +48,7 @@ Main hero START -->
 				</nav>
 			</div>
 			<!-- Title -->
-			<h1 class="h2 text-white">Crée un acte de naissance</h1>
+			<h1 class="h2 text-white">Demande un acte de naissance</h1>
 		</div>
 
 <div class="container">
@@ -65,6 +65,7 @@ Main hero START -->
                             <!-- Filiation -->
                         <div class="row mb-3">
                             <div class="col-md-6">
+                                <h5>Informations du demandeur</h5>
                                 <label for="filiation" class="form-label">Filiation du demandeur *</label>
                                 <select class="form-select @error('filiation') is-invalid @enderror" 
                                         id="filiation" name="filiation" required>
@@ -107,8 +108,10 @@ Main hero START -->
                                 @enderror
                             </div>
                         </div>
-
-                        <!-- Informations sur l'enfant -->
+                            <hr>  
+                            
+                            <h5>Informations de l'enfant </h5>
+                       
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label for="nom_enfant" class="form-label">Nom de l'enfant *</label>
@@ -180,8 +183,8 @@ Main hero START -->
                         </div>
 
                         <!-- Type de localité et localité -->
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
+                            <div class="row mb-6">
+                            <div class="col-md-6">
                         <label for="type_localite" class="form-label">Type de localité *</label>
                         <select class="form-select @error('type_localite') is-invalid @enderror" 
                                 id="type_localite" name="type_localite" required>
@@ -213,11 +216,11 @@ Main hero START -->
                             </div>
                         </div>
 
-
+                        <hr>
                         <!-- Informations sur les parents -->
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <h5>Informations sur le père *</h5>
+                                <h5>Informations du père *</h5>
                                 <div class="mb-3">
                                     <label for="nom_pere" class="form-label">Nom</label>
                                     <input type="text" class="form-control @error('nom_pere') is-invalid @enderror" 
@@ -271,7 +274,7 @@ Main hero START -->
                             </div>
                             
                             <div class="col-md-6">
-                                <h5>Informations sur la mère *</h5>
+                                <h5>Informations de la mère *</h5>
                                 <div class="mb-3">
                                     <label for="nom_mere" class="form-label">Nom *</label>
                                     <input type="text" class="form-control @error('nom_mere') is-invalid @enderror" 

@@ -138,7 +138,7 @@ class ActeNaissanceController extends Controller
         }
         $acte->update(['documents' => json_encode($paths)]);
     }
-// dd($acte);
+dd($acte);
     $acte->save();
 
     return redirect()->route('listeactenaissance')
