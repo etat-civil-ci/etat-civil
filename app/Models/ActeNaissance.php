@@ -20,6 +20,8 @@ class ActeNaissance extends Model
         'nom_enfant',
         'prenom_enfant',
         'lieu_naissance',
+        // nouvelle colonne
+        'heure_naissance',
         'localite_id',
         'nom_pere',
         'prenom_pere',
@@ -39,6 +41,8 @@ class ActeNaissance extends Model
     protected $casts = [
         'date_naissance' => 'date',
         'date_acte' => 'date',
+        'heure_naissance' => 'datetime:H:i:s', 
+        'documents'       => 'array',
     ];
 
     public function localite()

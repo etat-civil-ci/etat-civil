@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('nom_enfant', 100);
             $table->string('prenom_enfant', 100);
             $table->string('lieu_naissance', 100);
+            //nouvelle colonne
+            $table->time('heure_naissance');we
             $table->foreignId('localite_id')->constrained('localite');
             $table->string('nom_pere', 100)->nullable();
             $table->string('prenom_pere', 100)->nullable();
@@ -30,6 +32,7 @@ return new class extends Migration
             $table->string('profession_mere', 100)->nullable();
             $table->string('numero_acte', 50)->unique();
             $table->enum('statut', ['en cours', 'succès', 'échec'])->default('en cours');
+          
             $table->timestamps();
         });
     }

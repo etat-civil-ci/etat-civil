@@ -61,6 +61,10 @@ class ActeNaissanceController extends Controller
 
     public function store(Request $request)
 {
+
+//    dd($request->all()); 
+
+    //Les conditions de validation de chaque champs du formulaire
     $validated = $request->validate([
         'filiation' => 'required|string|max:100',
         'nom_demandeur' => 'required|string|max:100',
@@ -70,6 +74,8 @@ class ActeNaissanceController extends Controller
         'nom_enfant' => 'required|string|max:100',
         'prenom_enfant' => 'required|string|max:100',
         'lieu_naissance' => 'required|string|max:100',
+        //nouvelle colonne 
+        'heure_naissance' => 'nullable|date_format:H:i',
         'type_localite' => 'required|exists:type_localite,id',
         'localite_id' => 'required|exists:localite,id',
         'nom_pere' => 'nullable|string|max:100',
@@ -83,9 +89,12 @@ class ActeNaissanceController extends Controller
         'profession_mere' => 'nullable|string|max:100',
         'numero_cni_mere' => 'nullable|string|max:50',
         'documents.*' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+        
+
     ]);
 
-    // Génération du numéro d'acte
+
+    // Génération du numéro d'acte 
     $numeroActe = 'AN-' . date('Y-m') . '-' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
 
     // Création de l'acte sans les documents d'abord
@@ -98,6 +107,7 @@ class ActeNaissanceController extends Controller
         'nom_enfant' => $validated['nom_enfant'],
         'prenom_enfant' => $validated['prenom_enfant'],
         'lieu_naissance' => $validated['lieu_naissance'],
+        'heure_naissance' => $validated['heure_naissance'],
         'localite_id' => $validated['localite_id'],
         'nom_pere' => $validated['nom_pere'],
         'prenom_pere' => $validated['prenom_pere'],
@@ -112,7 +122,11 @@ class ActeNaissanceController extends Controller
         'numero_acte' => $numeroActe,
         'statut' => 'en cours',
         'documents' => null, // Initialisé à null
+
+          
     ]);
+    
+
 
     // Gestion des documents
     if ($request->hasFile('documents')) {
@@ -124,6 +138,8 @@ class ActeNaissanceController extends Controller
         }
         $acte->update(['documents' => json_encode($paths)]);
     }
+// dd($acte);
+    $acte->save();
 
     return redirect()->route('listeactenaissance')
                      ->with('success', 'Acte de naissance enregistré avec succès!');

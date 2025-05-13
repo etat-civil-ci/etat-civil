@@ -60,6 +60,31 @@ Main hero START -->
                         @csrf
 
                         <!-- Informations sur le demandeur -->
+
+
+                            <!-- Filiation -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="filiation" class="form-label">Filiation du demandeur *</label>
+                                <select class="form-select @error('filiation') is-invalid @enderror" 
+                                        id="filiation" name="filiation" required>
+                                    <option value="" disabled selected>Choisir...</option>
+                                    <option value="moi" {{ old('filiation') == 'moi' ? 'selected' : '' }}>Moi-meme</option>
+                                    <option value="père" {{ old('filiation') == 'père' ? 'selected' : '' }}>Père</option>
+                                    <option value="mère" {{ old('filiation') == 'mère' ? 'selected' : '' }}>Mère</option>
+                                    <option value="frère" {{ old('filiation') == 'frère' ? 'selected' : '' }}>Frère</option>
+                                    <option value="soeur" {{ old('filiation') == 'soeur' ? 'selected' : '' }}>Soeur</option>
+                                    <option value="autre" {{ old('filiation') == 'autre' ? 'selected' : '' }}>autre</option>
+                                </select>
+                                @error('filiation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="nom_demandeur" class="form-label">Nom du demandeur *</label>
@@ -131,8 +156,8 @@ Main hero START -->
                             </div>
 
                                 <!-- Heure de naissance-->
-                            <!-- <div class="col-md-6">
-                                <label for="heure_naissance" class="form-label">Heure de naissance*</label>
+                            <div class="col-md-6">
+                                <label for="heure_naissance" class="form-label">Heure de naissance *</label>
                                 <input type="time" class="form-control @error('lieu_naissance') is-invalid @enderror" 
                                        id="heure_naissance" name="heure_naissance" value="{{ old('heure_naissance') }}" required>
                                 @error('heure_naissance')
@@ -140,12 +165,7 @@ Main hero START -->
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div> -->
-
-
-
-
-
+                            </div>
 
                             <div class="col-md-6">
                                 <label for="date_acte" class="form-label">Date de l'acte *</label>
@@ -193,27 +213,6 @@ Main hero START -->
                             </div>
                         </div>
 
-                        <!-- Filiation -->
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="filiation" class="form-label">Filiation du demandeur *</label>
-                                <select class="form-select @error('filiation') is-invalid @enderror" 
-                                        id="filiation" name="filiation" required>
-                                    <option value="" disabled selected>Choisir...</option>
-                                    <option value="moi" {{ old('filiation') == 'moi' ? 'selected' : '' }}>Moi-meme</option>
-                                    <option value="père" {{ old('filiation') == 'père' ? 'selected' : '' }}>Père</option>
-                                    <option value="mère" {{ old('filiation') == 'mère' ? 'selected' : '' }}>Mère</option>
-                                    <option value="frère" {{ old('filiation') == 'frère' ? 'selected' : '' }}>Frère</option>
-                                    <option value="soeur" {{ old('filiation') == 'soeur' ? 'selected' : '' }}>Soeur</option>
-                                    <option value="autre" {{ old('filiation') == 'autre' ? 'selected' : '' }}>autre</option>
-                                </select>
-                                @error('filiation')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <!-- Informations sur les parents -->
                         <div class="row mb-3">
