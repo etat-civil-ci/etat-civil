@@ -178,6 +178,12 @@
 							</div>
 						</div>
 					</li>
+
+
+
+
+					<!-- Nav item -->
+					<li class="nav-item"> <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('mesdemandes') }}">Mes demandes</a> </li>
 					<!-- Nav item -->
 
 					<li class="nav-item dropdown">
@@ -191,6 +197,7 @@
 										<li> <a class="dropdown-item" href="{{ route('aproposactedenaissance') }}">Acte de naissance</a> </li>
 										<li> <a class="dropdown-item" href="{{ route('aproposactedemariage') }}">Acte de Mariage</a> </li>
 										<li> <a class="dropdown-item" href="{{ route('aproposactededeces') }}">Acte de Décès</a> </li>
+										<li> <a class="dropdown-item" href="{{ route('mesdemandes') }}">Mes demandes</a> </li>
 										<li> <a class="dropdown-item" href="{{ route('dashboard')}}">Dashboard</a> </li>
 										<li> <a class="dropdown-item" href="{{ route('account')}}">Account</a> </li>
 

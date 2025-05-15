@@ -57,6 +57,12 @@ class FrontController extends Controller
     {
         return view('frontend.listeactedeces');
     }
+
+    public function mesdemandes()
+    {
+        return view('frontend.mesdemandes');
+    }
+    
     
 
     public function account()

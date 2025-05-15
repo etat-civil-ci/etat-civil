@@ -19,6 +19,7 @@ Route::get('/apropos', [App\Http\Controllers\FrontController::class, 'apropos'])
 Route::get('/aproposactedenaissance', [App\Http\Controllers\FrontController::class, 'aproposactedenaissance'])->name('aproposactedenaissance');
 Route::get('/aproposactedemariage', [App\Http\Controllers\FrontController::class, 'aproposactedemariage'])->name('aproposactedemariage');
 Route::get('/aproposactededeces', [App\Http\Controllers\FrontController::class, 'aproposactededeces'])->name('aproposactededeces');
+Route::get('/mesdemandes', [App\Http\Controllers\FrontController::class, 'mesdemandes'])->name('mesdemandes');
 
 // Routes d'authentification
 Route::get('/sign-in', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
@@ -68,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/demande/acte-naissance/{acte}/details', [DemandeController::class, 'showActeDetails'])->name('demande.actenaissance.details');
     Route::get('/demande/paiement/{demande_id}', [PaiementController::class, 'create'])->name('demandes.paiement.create');
     Route::post('/demande/paiement', [PaiementController::class, 'store'])->name('demandes.paiement.store');
+
 
     //Route pour acte de deces
     Route::get('/demande/createactedeces', [ActeDecesController::class, 'createactedeces'])->name('createactedeces');
