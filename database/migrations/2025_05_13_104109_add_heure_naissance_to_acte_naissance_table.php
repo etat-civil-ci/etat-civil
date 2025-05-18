@@ -9,12 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+   public function up()
+{
+    if (!Schema::hasColumn('acte_naissance', 'heure_naissance')) {
         Schema::table('acte_naissance', function (Blueprint $table) {
-         $table->time('heure_naissance')->nullable(); 
+            $table->time('heure_naissance')->nullable();
         });
     }
+}
+
 
     /**
      * Reverse the migrations.

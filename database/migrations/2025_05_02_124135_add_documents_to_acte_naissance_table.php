@@ -13,10 +13,15 @@ return new class extends Migration
         });
     }
 
-    public function down()
-    {
+   public function down()
+{
+    if (Schema::hasTable('acte_naissance')) {
         Schema::table('acte_naissance', function (Blueprint $table) {
-            $table->dropColumn('documents');
+            if (Schema::hasColumn('acte_naissance', 'documents')) {
+                $table->dropColumn('documents');
+            }
         });
     }
+}
+
 };
