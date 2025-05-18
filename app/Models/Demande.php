@@ -33,4 +33,7 @@ class Demande extends Model
     {
         return $this->belongsTo(ActeNaissance::class, 'acte_id');
     }
+
+
+
 }

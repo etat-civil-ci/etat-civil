@@ -141,8 +141,9 @@ class ActeNaissanceController extends Controller
 // dd($acte);
     $acte->save();
 
-    return redirect()->route('listeactenaissance')
-                     ->with('success', 'Acte de naissance enregistré avec succès!');
+    return redirect()->route('frontend.index')
+   ->with('success', 'Acte de naissance enregistré avec succès!');
+//   return redirect()->route('home')->with('success', 'Acte de naissance enregistré avec succès!');
 }
 
     public function getLocalites($typeId)

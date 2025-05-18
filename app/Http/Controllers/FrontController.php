@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Demande;
 
 class FrontController extends Controller
 {
@@ -58,10 +59,15 @@ class FrontController extends Controller
         return view('frontend.listeactedeces');
     }
 
-    public function mesdemandes()
-    {
-        return view('frontend.mesdemandes');
-    }
+ public function mesdemandes()
+{
+    $demandes = Demande::with('user')->paginate(10); 
+
+    // dd($demandes->first());
+    return view('frontend.mesdemandes', compact('demandes'));
+}
+
+
     
     
 
