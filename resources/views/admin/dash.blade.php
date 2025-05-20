@@ -137,7 +137,7 @@
                     </div>
                     <div class="number">{{ $actesMariageAnnuel }}</div>
                     <div class="label">ACTES DE MARIAGE (ANNUELS)</div>
-                    <div class="total">Total: {{ $totalActesMarriage }}</div>
+                    <div class="total">Total: {{ $totalActesMariage }}</div>
                 </div>
             </div>
             
@@ -184,20 +184,20 @@
                         État des demandes
                     </div>
                     <div class="card-body">
-                        <canvas id="statutsChart" class="chart-container"></canvas>
+                        <canvas id="statutsChart" class="chart-container"  width="600" height="400"></canvas>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <div>
                             <span class="badge badge-validé">Validé</span>
-                            <span>{{ $demandesParStatut['validé'] ?? 0 }}</span>
+                            <span>{{ $demandesParStatut['traitee'] ?? 0 }}</span>
                         </div>
                         <div>
                             <span class="badge badge-attente">En attente</span>
-                            <span>{{ $demandesParStatut['en attente'] ?? 0 }}</span>
+                            <span>{{ $demandesParStatut['en_attente'] ?? 0 }}</span>
                         </div>
                         <div>
                             <span class="badge badge-annulé">Annulé</span>
-                            <span>{{ $demandesParStatut['annulé'] ?? 0 }}</span>
+                            <span>{{ $demandesParStatut['rejetee'] ?? 0 }}</span>
                         </div>
                     </div>
                 </div>
@@ -266,21 +266,16 @@
                                 <td>{{ $demande->created_at->format('d/m/Y') }}</td>
                                 <td>{{ $demande->user->role }}</td>
                                 <td>
-                                    @if($demande->statut == 'validé')
+                                    @if($demande->statut == 'traitee')
                                         <span class="badge badge-validé">Validé</span>
-                                    @elseif($demande->statut == 'en attente')
+                                    @elseif($demande->statut == 'en_attente')
                                         <span class="badge badge-attente">En attente</span>
                                     @else
                                         <span class="badge badge-annulé">Annulé</span>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('demandes.show', $demande->id) }}" class="btn btn-sm btn-info">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('demandes.edit', $demande->id) }}" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
+                                    
                                 </td>
                             </tr>
                             @endforeach
@@ -352,9 +347,9 @@
             labels: ['Validé', 'En attente', 'Annulé'],
             datasets: [{
                 data: [
-                    {{ $demandesParStatut['validé'] ?? 0 }},
-                    {{ $demandesParStatut['en attente'] ?? 0 }},
-                    {{ $demandesParStatut['annulé'] ?? 0 }}
+                    {{ $demandesParStatut['traitee'] ?? 0 }},
+                    {{ $demandesParStatut['en_attente'] ?? 0 }},
+                    {{ $demandesParStatut['rejetee'] ?? 0 }}
                 ],
                 backgroundColor: [
                     colors.green,

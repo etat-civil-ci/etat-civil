@@ -26,3 +26,15 @@
             <!-- Title -->
             <h1 class="h2 text-white">Tableau de Bord</h1>
         </div>
+
+
+
+
+
+
+<!-- <a href="{{ route('frontend.showvalidordemande', $demande->id) }}" class="btn btn-sm btn-info">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('demandes.edit', $demande->id) }}" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-edit"></i>
+                                    </a> -->

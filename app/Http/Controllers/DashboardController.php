@@ -16,64 +16,97 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+
     public function index()
     {
-        // Compteurs globaux
+        $actesNaissanceMensuel = ActeNaissance::whereMonth('created_at', now()->month)->count();
         $totalActesNaissance = ActeNaissance::count();
-        $totalActesMarriage = ActeMariage::count();
+
+        $actesMariageAnnuel = ActeMariage::whereYear('created_at', now()->year)->count();
+        $totalActesMariage = ActeMariage::count();
+
+        $actesDecesMensuel = ActeDeces::whereMonth('created_at', now()->month)->count();
         $totalActesDeces = ActeDeces::count();
-        $totalCitoyens = User::where('role', 'citoyen')->count();
-        
-        // Statistiques des derniers 30 jours
-        $dateDebut = Carbon::now()->subDays(30);
-        
-        $actesNaissanceMensuel = ActeNaissance::where('created_at', '>=', $dateDebut)->count();
-        $actesMariageAnnuel = ActeMariage::where('created_at', '>=', Carbon::now()->startOfYear())->count();
-        $actesDecesMensuel = ActeDeces::where('created_at', '>=', $dateDebut)->count();
-        
-        // Demandes récentes
-        $demandesRecentes = Demande::with(['user', 'localite'])
-                            ->orderBy('created_at', 'desc')
-                            ->take(10)
-                            ->get();
-        
-        // Statistiques des demandes par statut
-        $demandesParStatut = Demande::select('statut', DB::raw('count(*) as total'))
-                            ->groupBy('statut')
-                            ->get()
-                            ->pluck('total', 'statut')
-                            ->toArray();
-        
-        // Revenus
+
+        $totalCitoyens = User::count();
+
+        // Statistiques des demandes (30 derniers jours)
+        $demandes = Demande::where('created_at', '>=', now()->subDays(30))->get();
+
+        $jours = [];
+        $totaux = [];
+
+        for ($i = 29; $i >= 0; $i--) {
+            $jour = now()->subDays($i)->format('Y-m-d');
+            $jours[] = $jour;
+            $totaux[] = $demandes->whereBetween('created_at', [$jour . ' 00:00:00', $jour . ' 23:59:59'])->count();
+        }
+
+        $statsDemandes = [
+            'jours' => $jours,
+            'totaux' => $totaux
+        ];
+
+        // Statuts des demandes
+        $demandesParStatut = [
+            'validé' => Demande::where('statut', 'traitee')->count(),
+            'en attente' => Demande::where('statut', 'en_attente')->count(),
+            'annulé' => Demande::where('statut', 'rejetee')->count()
+        ];
+
+        // Revenus mensuels
+        $mois = [];
+        $totaux = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $mois[] = Carbon::create()->month($i)->locale('fr_FR')->isoFormat('MMMM');
+            $totaux[] = Payment::whereMonth('created_at', $i)
+                                ->whereYear('created_at', now()->year)
+                                ->sum('montant');
+        }
+
+        $statsRevenu = [
+            'mois' => $mois,
+            'totaux' => $totaux
+        ];
+
         $revenuTotal = Payment::sum('montant');
-        $revenuMensuel = Payment::where('created_at', '>=', $dateDebut)->sum('montant');
-        
-        // Statistiques des téléchargements
-        $downloadCount = DownloadHistory::count();
-        
-        // Données pour graphiques
-        $statsDemandes = $this->getDemandesStats();
-        $statsRevenu = $this->getRevenuStats();
-        // $statsLocalites = $this->getLocalitesStats();
-        
-        return view('frontend.dash', compact(
-            'totalActesNaissance', 
-            'totalActesMarriage', 
-            'totalActesDeces', 
-            'totalCitoyens',
+        $revenuMensuel = Payment::whereMonth('created_at', now()->month)->sum('montant');
+
+        // Top 5 localités avec le plus d’actes de naissance
+        $topLocalitesData = ActeNaissance::select('localite_id', DB::raw('count(*) as total'))
+            ->groupBy('localite_id')
+            ->orderByDesc('total')
+            ->with('localite')
+            ->take(5)
+            ->get();
+
+        $topLocalites = [
+            'noms' => $topLocalitesData->pluck('localite.nom'),
+            'totaux' => $topLocalitesData->pluck('total')
+        ];
+
+        $demandesRecentes = Demande::latest()->take(10)->get();
+
+        return view('admin.dash', compact(
             'actesNaissanceMensuel',
+            'totalActesNaissance',
             'actesMariageAnnuel',
+            'totalActesMariage',
             'actesDecesMensuel',
-            'demandesRecentes',
+            'totalActesDeces',
+            'totalCitoyens',
+            'statsDemandes',
             'demandesParStatut',
+            'statsRevenu',
             'revenuTotal',
             'revenuMensuel',
-            'downloadCount',
-            'statsDemandes',
-            'statsRevenu'
-            // 'statsLocalites'
+            'topLocalites',
+            'demandesRecentes'
         ));
     }
+
+
     
     private function getDemandesStats()
     {
