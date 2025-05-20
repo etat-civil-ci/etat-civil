@@ -18,9 +18,9 @@ return new class extends Migration
             $table->date('date_acte');
             $table->string('nom_enfant', 100);
             $table->string('prenom_enfant', 100);
-            $table->string('lieu_naissance', 100);
+            $table->string('lieu_naissance', 100)->nullable();
             //nouvelle colonne
-            $table->time('heure_naissance');we
+            $table->time('heure_naissance');
             $table->foreignId('localite_id')->constrained('localite');
             $table->string('nom_pere', 100)->nullable();
             $table->string('prenom_pere', 100)->nullable();
