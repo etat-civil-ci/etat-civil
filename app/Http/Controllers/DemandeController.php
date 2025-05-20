@@ -60,8 +60,8 @@ class DemandeController extends Controller
     public function showActeDetails(ActeNaissance $acte, Request $request)
     {
         if ($acte->statut !== 'succès') {
-        return back()->withErrors(['statut' => 'Cet acte de naissance n’est pas encore disponible. Veuillez réessayer plus tard.']);
-    }
+            return back()->withErrors(['statut' => 'Cet acte de naissance n’est pas encore disponible. Veuillez réessayer plus tard.']);
+        }
         $nombre_copie = $request->query('nombre_copie', 1);
         $prix_copie = 500; // Prix par copie
         $frais = 200; // Frais par copie

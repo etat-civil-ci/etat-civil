@@ -198,7 +198,7 @@
 										<li> <a class="dropdown-item" href="{{ route('aproposactedemariage') }}">Acte de Mariage</a> </li>
 										<li> <a class="dropdown-item" href="{{ route('aproposactededeces') }}">Acte de Décès</a> </li>
 										<li> <a class="dropdown-item" href="{{ route('mesdemandes') }}">Mes demandes</a> </li>
-										<li> <a class="dropdown-item" href="{{ route('dashboard')}}">Dashboard</a> </li>
+										<li> <a class="dropdown-item" href="{{ route('dash')}}">Dashboard</a> </li>
 										<li> <a class="dropdown-item" href="{{ route('account')}}">Account</a> </li>
 
 									</ul>

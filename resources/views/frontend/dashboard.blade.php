@@ -151,3 +151,31 @@
 
 
 @stop
+
+ // const localitesChart = new Chart(localitesCtx, {
+    //     type: 'pie',
+    //     data: {
+    //         labels: @json($statsLocalites['noms']),
+    //         datasets: [{
+    //             data: @json($statsLocalites['totaux']),
+    //             backgroundColor: [
+    //                 colors.blue,
+    //                 colors.green,
+    //                 colors.orange,
+    //                 colors.purple,
+    //                 colors.teal
+    //             ],
+    //             borderWidth: 1
+    //         }]
+    //     },
+    //     options: {
+    //         responsive: true,
+    //         maintainAspectRatio: false,
+    //         plugins: {
+    //             legend: {
+    //                 position: 'bottom'
+    //             }
+    //         }
+    //     }
+    // });
+    

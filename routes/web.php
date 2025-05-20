@@ -10,6 +10,8 @@ use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\ActeDecesController;
 use App\Http\Controllers\ActeMariageController;
 
+use App\Http\Controllers\DashboardController;
+
 // Routes principales
 Route::get('/', [App\Http\Controllers\FrontController::class, 'index'])->name('home');
 
@@ -38,9 +40,9 @@ Route::post('/reset-password', [App\Http\Controllers\AuthController::class, 'upd
 // Routes protégées (authentification requise)
 Route::middleware(['auth'])->group(function () {
     // Dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dash', function () {
+        return view('dash');
+    })->name('dash');
 
     // Routes pour les actes d'état civil (exactement comme avant mais protégées)
     Route::get('/welcome', [App\Http\Controllers\FrontController::class, 'welcome'])->name('welcome');
@@ -50,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account', [App\Http\Controllers\FrontController::class, 'account'])->name('account');
    // Dans le groupe middleware(['auth'])
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-    Route::get('/dashboard', [App\Http\Controllers\FrontController::class, 'dashboard'])->name('dashboard');
+    // Route::get('/dashboard', [App\Http\Controllers\FrontController::class, 'dashboard'])->name('dashboard');
     Route::get('/listeactemariage', [App\Http\Controllers\FrontController::class, 'listeactemariage'])->name('listeactemariage');
     Route::get('/listeactedeces', [App\Http\Controllers\FrontController::class, 'listeactedeces'])->name('listeactedeces');
 
@@ -103,4 +105,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/demande/acte-mariage/{acte}/details', [DemandeController::class, 'showActeDetailsActeMariage'])->name('demande.actemariage.details');
     Route::get('/demande/paiement/{demande_id}', [PaiementController::class, 'create'])->name('demandes.paiement.create');
     Route::post('/demande/paiement', [PaiementController::class, 'store'])->name('demandes.paiement.store');
+
+
+
+
+
+    // Dashboard
+
+    Route::get('/dash', [App\Http\Controllers\DashboardController::class, 'index'])->name('dash');
+
 });

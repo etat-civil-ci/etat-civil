@@ -41,7 +41,7 @@ class FrontController extends Controller
 
     public function dashboard()
     {
-        return view('frontend.dashboard');
+        return view('frontend.dash');
     }
 
     public function listeactemariage()

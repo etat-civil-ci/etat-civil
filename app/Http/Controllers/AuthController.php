@@ -30,7 +30,7 @@ class AuthController extends Controller
             
             // Rediriger en fonction du rôle de l'utilisateur
             if ($user->role === 'admin') {
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('/dash');
             } elseif ($user->role === 'officier') {
                 return redirect()->intended('/dashboard');
             } else {
