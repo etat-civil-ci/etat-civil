@@ -19,10 +19,18 @@ return new class extends Migration
         });
     }
 
-    public function down()
-    {
+   public function down()
+{
+    if (Schema::hasTable('acte_naissance')) {
         Schema::table('acte_naissance', function (Blueprint $table) {
-            $table->dropColumn(['numero_cni_pere', 'numero_cni_mere']);
+            if (Schema::hasColumn('acte_naissance', 'numero_cni_pere')) {
+                $table->dropColumn('numero_cni_pere');
+            }
+            if (Schema::hasColumn('acte_naissance', 'numero_cni_mere')) {
+                $table->dropColumn('numero_cni_mere');
+            }
         });
     }
+}
+
 };

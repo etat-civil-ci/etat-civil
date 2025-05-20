@@ -1,11 +1,10 @@
 <?php
 
-// database/migrations/[timestamp]_create_acte_naissance_table.php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateActeNaissanceTable extends Migration
 {
     public function up()
     {
@@ -18,9 +17,9 @@ return new class extends Migration
             $table->date('date_acte');
             $table->string('nom_enfant', 100);
             $table->string('prenom_enfant', 100);
-            $table->string('lieu_naissance', 100)->nullable();
+            $table->string('lieu_naissance', 100);
             //nouvelle colonne
-            $table->time('heure_naissance');
+            $table->time('heure_naissance')->nullable();
             $table->foreignId('localite_id')->constrained('localite');
             $table->string('nom_pere', 100)->nullable();
             $table->string('prenom_pere', 100)->nullable();
@@ -32,7 +31,7 @@ return new class extends Migration
             $table->string('profession_mere', 100)->nullable();
             $table->string('numero_acte', 50)->unique();
             $table->enum('statut', ['en cours', 'succès', 'échec'])->default('en cours');
-          
+
             $table->timestamps();
         });
     }
@@ -41,4 +40,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('acte_naissance');
     }
-};
+}
