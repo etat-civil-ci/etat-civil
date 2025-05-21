@@ -282,6 +282,23 @@
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script>
+    // --- DÉBUT DES VÉRIFICATIONS DE DIAGNOSTIC ---
+    console.log("--- Début de l'exécution du script dash.blade.php ---");
+
+    if (typeof Chart === 'undefined') {
+        console.error("ERREUR: La bibliothèque Chart.js n'est pas chargée. Vérifiez l'URL du CDN ou votre connexion.");
+    } else {
+        console.log("Chart.js est chargé avec succès.");
+    }
+
+    if (typeof jQuery === 'undefined') {
+        console.warn("AVERTISSEMENT: jQuery n'est pas chargé. La DataTable pourrait ne pas fonctionner.");
+    } else {
+        console.log("jQuery est chargé avec succès.");
+    }
+    console.log("--- Fin des vérifications initiales ---");
+    // --- FIN DES VÉRIFICATIONS DE DIAGNOSTIC ---
+
     // Configuration des couleurs
     const colors = {
         green: 'rgba(40, 167, 69, 0.7)',
@@ -295,131 +312,164 @@
     };
     
     // Graphique des demandes
-    const demandesCtx = document.getElementById('demandesChart').getContext('2d');
-    const demandesChart = new Chart(demandesCtx, {
-        type: 'line',
-        data: {
-            labels: @json($statsDemandes['jours']),
-            datasets: [{
-                label: 'Nombre de demandes',
-                data: @json($statsDemandes['totaux']),
-                backgroundColor: colors.blue,
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 2,
-                tension: 0.4,
-                pointRadius: 4,
-                pointBackgroundColor: 'rgba(0, 123, 255, 1)'
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                }
+    try {
+        const demandesCtx = document.getElementById('demandesChart').getContext('2d');
+        const demandesLabels = @json($statsDemandes['jours']);
+        const demandesData = @json($statsDemandes['totaux']);
+
+        console.log('Données pour le graphique des demandes (labels):', demandesLabels);
+        console.log('Données pour le graphique des demandes (data):', demandesData);
+
+        new Chart(demandesCtx, {
+            type: 'line',
+            data: {
+                labels: demandesLabels,
+                datasets: [{
+                    label: 'Nombre de demandes',
+                    data: demandesData,
+                    backgroundColor: colors.blue,
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: 'rgba(0, 123, 255, 1)'
+                }]
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('Erreur lors de la création du graphique des demandes:', error);
+    }
     
     // Graphique des statuts de demandes
-    const statutsCtx = document.getElementById('statutsChart').getContext('2d');
-    const statutsChart = new Chart(statutsCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Traitée', 'En attente', 'Rejetée'], // Labels mis à jour
-            datasets: [{
-                data: [
-                    {{ $demandesParStatut['traitee'] ?? 0 }},
-                    {{ $demandesParStatut['en_attente'] ?? 0 }},
-                    {{ $demandesParStatut['rejetee'] ?? 0 }}
-                ],
-                backgroundColor: [
-                    colors.green,
-                    colors.yellow,
-                    colors.red
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom'
+    try {
+        const statutsCtx = document.getElementById('statutsChart').getContext('2d');
+        const statutsData = [
+            {{ $demandesParStatut['traitee'] ?? 0 }},
+            {{ $demandesParStatut['en_attente'] ?? 0 }},
+            {{ $demandesParStatut['rejetee'] ?? 0 }}
+        ];
+
+        console.log('Données pour le graphique des statuts:', statutsData);
+
+        new Chart(statutsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Traitée', 'En attente', 'Rejetée'], // Labels mis à jour
+                datasets: [{
+                    data: statutsData,
+                    backgroundColor: [
+                        colors.green,
+                        colors.yellow,
+                        colors.red
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('Erreur lors de la création du graphique des statuts:', error);
+    }
     
     // Graphique des revenus
-    const revenuCtx = document.getElementById('revenuChart').getContext('2d');
-    const revenuChart = new Chart(revenuCtx, {
-        type: 'bar',
-        data: {
-            labels: @json($statsRevenu['mois']), // Utilise les noms complets des mois
-            datasets: [{
-                label: 'Revenu mensuel (FCFA)',
-                data: @json($statsRevenu['totaux']),
-                backgroundColor: colors.green,
-                borderColor: 'rgba(40, 167, 69, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                }
+    try {
+        const revenuCtx = document.getElementById('revenuChart').getContext('2d');
+        const revenuLabels = @json($statsRevenu['mois']);
+        const revenuData = @json($statsRevenu['totaux']);
+
+        console.log('Données pour le graphique des revenus (labels):', revenuLabels);
+        console.log('Données pour le graphique des revenus (data):', revenuData);
+
+        new Chart(revenuCtx, {
+            type: 'bar',
+            data: {
+                labels: revenuLabels, // Utilise les noms complets des mois
+                datasets: [{
+                    label: 'Revenu mensuel (FCFA)',
+                    data: revenuData,
+                    backgroundColor: colors.green,
+                    borderColor: 'rgba(40, 167, 69, 1)',
+                    borderWidth: 1
+                }]
             },
-            scales: {
-                y: {
-                    beginAtZero: true
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('Erreur lors de la création du graphique des revenus:', error);
+    }
     
     // Graphique des localités
-    const localitesCtx = document.getElementById('localitesChart').getContext('2d');
-    const localitesChart = new Chart(localitesCtx, {
-        type: 'pie', // Vous pouvez changer le type de graphique ici (ex: 'bar')
-        data: {
-            labels: @json($topLocalites['noms']),
-            datasets: [{
-                label: 'Nombre d\'actes',
-                data: @json($topLocalites['totaux']),
-                backgroundColor: [
-                    colors.blue,
-                    colors.purple,
-                    colors.teal,
-                    colors.orange,
-                    colors.indigo
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom'
+    try {
+        const localitesCtx = document.getElementById('localitesChart').getContext('2d');
+        const localitesLabels = @json($topLocalites['noms']);
+        const localitesData = @json($topLocalites['totaux']);
+
+        console.log('Données pour le graphique des localités (labels):', localitesLabels);
+        console.log('Données pour le graphique des localités (data):', localitesData);
+
+        new Chart(localitesCtx, {
+            type: 'pie', // Vous pouvez changer le type de graphique ici (ex: 'bar')
+            data: {
+                labels: localitesLabels,
+                datasets: [{
+                    label: 'Nombre d\'actes',
+                    data: localitesData,
+                    backgroundColor: [
+                        colors.blue,
+                        colors.purple,
+                        colors.teal,
+                        colors.orange,
+                        colors.indigo
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('Erreur lors de la création du graphique des localités:', error);
+    }
    
     // DataTable pour les demandes
     $(document).ready(function() {

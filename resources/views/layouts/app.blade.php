@@ -98,7 +98,6 @@
 	</script>
 
 </head>
-
 <body>
 	
 <!-- Header START -->
@@ -457,6 +456,7 @@ Footer END -->
 
 <!-- Theme Functions -->
 <script src="assets/js/functions.js"></script>
+@yield('scripts')
 
 </body>
 </html>
