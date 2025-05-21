@@ -58,17 +58,18 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
-    .badge-validé {
+    /* Mise à jour des classes de badge pour correspondre aux statuts de la DB */
+    .badge-traitee {
         background-color: #28a745;
         color: white;
     }
     
-    .badge-attente {
+    .badge-en_attente {
         background-color: #ffc107;
         color: #343a40;
     }
     
-    .badge-annulé {
+    .badge-rejetee {
         background-color: #dc3545;
         color: white;
     }
@@ -84,23 +85,17 @@
 <section class="pt-8">
     <div class="container-fluid px-4">
     
-            <!-- Breadcrumb & title -->
-        <div class="bg-dark rounded-4 text-center position-relative overflow-hidden py-5">
-            <!-- Svg decoration -->
+            <div class="bg-dark rounded-4 text-center position-relative overflow-hidden py-5">
             <figure class="position-absolute top-0 start-0 ms-n8">
                 <svg width="424" height="405" viewBox="0 0 424 405" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- SVG content -->
-                </svg>
+                    </svg>
             </figure>
 
-            <!-- SVG decoration -->
             <figure class="position-absolute top-0 end-0 me-n8 mt-5">
                 <svg class="opacity-3" width="371" height="354" viewBox="0 0 371 354" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- SVG content -->
-                </svg>
+                    </svg>
             </figure>
 
-            <!-- Breadcrumb -->
             <div class="d-flex justify-content-center position-relative z-index-9">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-dots breadcrumb-dark mb-1">
@@ -109,15 +104,12 @@
                     </ol>
                 </nav>
             </div>
-            <!-- Title -->
             <h1 class="h2 text-white">Tableau de Bord</h1>
         </div>
-            <!-- <h1 class="mt-4">Tableau de Bord</h1> -->
-        <ol class="breadcrumb mb-4">
+            <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Vue d'ensemble du système</li>
         </ol>
         
-        <!-- Cartes statistiques principales -->
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="stats-card card-green">
@@ -163,7 +155,6 @@
             </div>
         </div>
         
-        <!-- Statistiques des demandes et revenus -->
         <div class="row">
             <div class="col-lg-8">
                 <div class="card mb-4">
@@ -188,15 +179,15 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <div>
-                            <span class="badge badge-validé">Validé</span>
+                            <span class="badge badge-traitee">Traitée</span>
                             <span>{{ $demandesParStatut['traitee'] ?? 0 }}</span>
                         </div>
                         <div>
-                            <span class="badge badge-attente">En attente</span>
+                            <span class="badge badge-en_attente">En attente</span>
                             <span>{{ $demandesParStatut['en_attente'] ?? 0 }}</span>
                         </div>
                         <div>
-                            <span class="badge badge-annulé">Annulé</span>
+                            <span class="badge badge-rejetee">Rejetée</span>
                             <span>{{ $demandesParStatut['rejetee'] ?? 0 }}</span>
                         </div>
                     </div>
@@ -204,7 +195,6 @@
             </div>
         </div>
         
-        <!-- Statistiques financières et géographiques -->
         <div class="row">
             <div class="col-lg-8">
                 <div class="card mb-4">
@@ -239,7 +229,6 @@
             </div>
         </div>
         
-        <!-- Demandes récentes -->
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -262,20 +251,22 @@
                             @foreach($demandesRecentes as $demande)
                             <tr>
                                 <td>{{ $demande->id }}</td>
-                                <td>{{ $demande->user->nom }} {{ $demande->user->prenom }}</td>
+                                {{-- Utilisation de $demande->user->name car le schéma 'users' a une colonne 'name' --}}
+                                <td>{{ $demande->user->name }}</td> 
                                 <td>{{ $demande->created_at->format('d/m/Y') }}</td>
                                 <td>{{ $demande->user->role }}</td>
                                 <td>
+                                    {{-- Mise à jour des badges pour correspondre aux statuts de la DB --}}
                                     @if($demande->statut == 'traitee')
-                                        <span class="badge badge-validé">Validé</span>
+                                        <span class="badge badge-traitee">Traitée</span>
                                     @elseif($demande->statut == 'en_attente')
-                                        <span class="badge badge-attente">En attente</span>
+                                        <span class="badge badge-en_attente">En attente</span>
                                     @else
-                                        <span class="badge badge-annulé">Annulé</span>
+                                        <span class="badge badge-rejetee">Rejetée</span>
                                     @endif
                                 </td>
                                 <td>
-                                    
+                                    {{-- Ajoutez ici les actions pour chaque demande --}}
                                 </td>
                             </tr>
                             @endforeach
@@ -344,7 +335,7 @@
     const statutsChart = new Chart(statutsCtx, {
         type: 'doughnut',
         data: {
-            labels: ['Validé', 'En attente', 'Annulé'],
+            labels: ['Traitée', 'En attente', 'Rejetée'], // Labels mis à jour
             datasets: [{
                 data: [
                     {{ $demandesParStatut['traitee'] ?? 0 }},
@@ -375,7 +366,7 @@
     const revenuChart = new Chart(revenuCtx, {
         type: 'bar',
         data: {
-            labels: @json($statsRevenu['mois']),
+            labels: @json($statsRevenu['mois']), // Utilise les noms complets des mois
             datasets: [{
                 label: 'Revenu mensuel (FCFA)',
                 data: @json($statsRevenu['totaux']),
@@ -402,6 +393,33 @@
     
     // Graphique des localités
     const localitesCtx = document.getElementById('localitesChart').getContext('2d');
+    const localitesChart = new Chart(localitesCtx, {
+        type: 'pie', // Vous pouvez changer le type de graphique ici (ex: 'bar')
+        data: {
+            labels: @json($topLocalites['noms']),
+            datasets: [{
+                label: 'Nombre d\'actes',
+                data: @json($topLocalites['totaux']),
+                backgroundColor: [
+                    colors.blue,
+                    colors.purple,
+                    colors.teal,
+                    colors.orange,
+                    colors.indigo
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
    
     // DataTable pour les demandes
     $(document).ready(function() {
