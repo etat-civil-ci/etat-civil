@@ -66,7 +66,7 @@ Main hero START -->
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <h5>Informations du demandeur</h5>
-                                <label for="filiation" class="form-label">Filiation du demandeur *</label>
+                                <label for="filiation" class="form-label">Filiation du demandeur <span style="color:red">*</label>
                                 <select class="form-select @error('filiation') is-invalid @enderror" 
                                         id="filiation" name="filiation" required>
                                     <option value="" disabled selected>Choisir...</option>
@@ -88,7 +88,7 @@ Main hero START -->
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="nom_demandeur" class="form-label">Nom du demandeur *</label>
+                                <label for="nom_demandeur" class="form-label">Nom du demandeur <span style="color:red">*</span> </label>
                                 <input type="text" class="form-control @error('nom_demandeur') is-invalid @enderror" 
                                        id="nom_demandeur" name="nom_demandeur" value="{{ old('nom_demandeur') }}" required>
                                 @error('nom_demandeur')
@@ -98,7 +98,7 @@ Main hero START -->
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="prenom_demandeur" class="form-label">Prénom du demandeur *</label>
+                                <label for="prenom_demandeur" class="form-label">Prénom du demandeur <span style="color:red">*</label>
                                 <input type="text" class="form-control @error('prenom_demandeur') is-invalid @enderror" 
                                        id="prenom_demandeur" name="prenom_demandeur" value="{{ old('prenom_demandeur') }}" required>
                                 @error('prenom_demandeur')
@@ -114,7 +114,7 @@ Main hero START -->
                        
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <label for="nom_enfant" class="form-label">Nom de l'enfant *</label>
+                                <label for="nom_enfant" class="form-label">Nom de l'enfant <span style="color:red">*</label>
                                 <input type="text" class="form-control @error('nom_enfant') is-invalid @enderror" 
                                        id="nom_enfant" name="nom_enfant" value="{{ old('nom_enfant') }}" required>
                                 @error('nom_enfant')
@@ -124,7 +124,7 @@ Main hero START -->
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for="prenom_enfant" class="form-label">Prénom de l'enfant *</label>
+                                <label for="prenom_enfant" class="form-label">Prénom de l'enfant <span style="color:red">*</label>
                                 <input type="text" class="form-control @error('prenom_enfant') is-invalid @enderror" 
                                        id="prenom_enfant" name="prenom_enfant" value="{{ old('prenom_enfant') }}" required>
                                 @error('prenom_enfant')
@@ -134,7 +134,7 @@ Main hero START -->
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for="date_naissance" class="form-label">Date de naissance *</label>
+                                <label for="date_naissance" class="form-label">Date de naissance <span style="color:red">*</label>
                                 <input type="date" class="form-control @error('date_naissance') is-invalid @enderror" 
                                        id="date_naissance" name="date_naissance" value="{{ old('date_naissance') }}" required>
                                 @error('date_naissance')
@@ -148,7 +148,7 @@ Main hero START -->
                         <!-- Lieu de naissance et localité -->
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="lieu_naissance" class="form-label">Lieu de naissance (établissement) *</label>
+                                <label for="lieu_naissance" class="form-label">Lieu de naissance (établissement) <span style="color:red">*</label>
                                 <input type="text" class="form-control @error('lieu_naissance') is-invalid @enderror" 
                                        id="lieu_naissance" name="lieu_naissance" value="{{ old('lieu_naissance') }}" required>
                                 @error('lieu_naissance')
@@ -160,7 +160,7 @@ Main hero START -->
 
                                 <!-- Heure de naissance-->
                             <div class="col-md-6">
-                                <label for="heure_naissance" class="form-label">Heure de naissance *</label>
+                                <label for="heure_naissance" class="form-label">Heure de naissance <span style="color:red">*</label>
                                 <input type="time" class="form-control @error('lieu_naissance') is-invalid @enderror" 
                                        id="heure_naissance" name="heure_naissance" value="{{ old('heure_naissance') }}" required>
                                 @error('heure_naissance')
@@ -171,7 +171,7 @@ Main hero START -->
                             </div>
 
                             <div class="col-md-6">
-                                <label for="date_acte" class="form-label">Date de l'acte *</label>
+                                <label for="date_acte" class="form-label">Date de l'acte <span style="color:red">*</label>
                                 <input type="date" class="form-control @error('date_acte') is-invalid @enderror" 
                                        id="date_acte" name="date_acte" value="{{ old('date_acte', now()->format('Y-m-d')) }}" required>
                                 @error('date_acte')
@@ -185,7 +185,7 @@ Main hero START -->
                         <!-- Type de localité et localité -->
                             <div class="row mb-6">
                             <div class="col-md-6">
-                        <label for="type_localite" class="form-label">Type de localité *</label>
+                        <label for="type_localite" class="form-label">Type de localité <span style="color:red">*</label>
                         <select class="form-select @error('type_localite') is-invalid @enderror" 
                                 id="type_localite" name="type_localite" required>
                             <option value="" disabled selected>Choisir...</option>
@@ -203,7 +203,7 @@ Main hero START -->
                     </div>
 
                             <div class="col-md-6">
-                                <label for="localite_id" class="form-label">Localité *</label>
+                                <label for="localite_id" class="form-label">Localité <span style="color:red">*</label>
                                 <select class="form-select @error('localite_id') is-invalid @enderror" 
                                         id="localite_id" name="localite_id" required>
                                     <option value="" disabled selected>Choisir d'abord le type</option>
@@ -222,7 +222,7 @@ Main hero START -->
                             <div class="col-md-6">
                                 <h5>Informations du père *</h5>
                                 <div class="mb-3">
-                                    <label for="nom_pere" class="form-label">Nom</label>
+                                    <label for="nom_pere" class="form-label">Nom <span style="color:red">*</label>
                                     <input type="text" class="form-control @error('nom_pere') is-invalid @enderror" 
                                            id="nom_pere" name="nom_pere" value="{{ old('nom_pere') }}">
                                     @error('nom_pere')
@@ -232,7 +232,7 @@ Main hero START -->
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="prenom_pere" class="form-label">Prénom</label>
+                                    <label for="prenom_pere" class="form-label">Prénom <span style="color:red">*</label>
                                     <input type="text" class="form-control @error('prenom_pere') is-invalid @enderror" 
                                            id="prenom_pere" name="prenom_pere" value="{{ old('prenom_pere') }}">
                                     @error('prenom_pere')
@@ -242,7 +242,7 @@ Main hero START -->
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="domicile_pere" class="form-label">Domicile</label>
+                                    <label for="domicile_pere" class="form-label">Domicile <span style="color:red">*</label>
                                     <input type="text" class="form-control @error('domicile_pere') is-invalid @enderror" 
                                            id="domicile_pere" name="domicile_pere" value="{{ old('domicile_pere') }}">
                                     @error('domicile_pere')
@@ -252,7 +252,7 @@ Main hero START -->
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="profession_pere" class="form-label">Profession</label>
+                                    <label for="profession_pere" class="form-label">Profession <span style="color:red">*</label>
                                     <input type="text" class="form-control @error('profession_pere') is-invalid @enderror" 
                                            id="profession_pere" name="profession_pere" value="{{ old('profession_pere') }}">
                                     @error('profession_pere')
@@ -276,7 +276,7 @@ Main hero START -->
                             <div class="col-md-6">
                                 <h5>Informations de la mère *</h5>
                                 <div class="mb-3">
-                                    <label for="nom_mere" class="form-label">Nom *</label>
+                                    <label for="nom_mere" class="form-label">Nom <span style="color:red">*</label>
                                     <input type="text" class="form-control @error('nom_mere') is-invalid @enderror" 
                                            id="nom_mere" name="nom_mere" value="{{ old('nom_mere') }}" required>
                                     @error('nom_mere')
@@ -286,7 +286,7 @@ Main hero START -->
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="prenom_mere" class="form-label">Prénom *</label>
+                                    <label for="prenom_mere" class="form-label">Prénom <span style="color:red">*</label>
                                     <input type="text" class="form-control @error('prenom_mere') is-invalid @enderror" 
                                            id="prenom_mere" name="prenom_mere" value="{{ old('prenom_mere') }}" required>
                                     @error('prenom_mere')
@@ -296,7 +296,7 @@ Main hero START -->
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="domicile_mere" class="form-label">Domicile</label>
+                                    <label for="domicile_mere" class="form-label">Domicile <span style="color:red">*</label>
                                     <input type="text" class="form-control @error('domicile_mere') is-invalid @enderror" 
                                            id="domicile_mere" name="domicile_mere" value="{{ old('domicile_mere') }}">
                                     @error('domicile_mere')
@@ -306,7 +306,7 @@ Main hero START -->
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="profession_mere" class="form-label">Profession</label>
+                                    <label for="profession_mere" class="form-label">Profession <span style="color:red">*</label>
                                     <input type="text" class="form-control @error('profession_mere') is-invalid @enderror" 
                                            id="profession_mere" name="profession_mere" value="{{ old('profession_mere') }}">
                                     @error('profession_mere')

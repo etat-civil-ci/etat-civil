@@ -63,7 +63,7 @@ Main hero START -->
 
                 <!-- Informations sur le défunt -->
                 <div class="col-md-6">
-                    <label for="nom_defunt" class="form-label">Nom du défunt *</label>
+                    <label for="nom_defunt" class="form-label">Nom du défunt <span style="color:red">*</label>
                     <input type="text" class="form-control @error('nom_defunt') is-invalid @enderror" 
                            id="nom_defunt" name="nom_defunt" 
                            value="{{ old('nom_defunt') }}" required>
@@ -73,7 +73,7 @@ Main hero START -->
                 </div>
 
                 <div class="col-md-6">
-                    <label for="prenom_defunt" class="form-label">Prénom du défunt *</label>
+                    <label for="prenom_defunt" class="form-label">Prénom du défunt <span style="color:red">*</label>
                     <input type="text" class="form-control @error('prenom_defunt') is-invalid @enderror" 
                            id="prenom_defunt" name="prenom_defunt" 
                            value="{{ old('prenom_defunt') }}" required>
@@ -83,7 +83,7 @@ Main hero START -->
                 </div>
 
                 <div class="col-md-6">
-                    <label for="date_deces" class="form-label">Date de décès *</label>
+                    <label for="date_deces" class="form-label">Date de décès <span style="color:red">*</label>
                     <input type="date" class="form-control @error('date_deces') is-invalid @enderror" 
                            id="date_deces" name="date_deces" 
                            value="{{ old('date_deces') }}" required>
@@ -93,7 +93,7 @@ Main hero START -->
                 </div>
 
                 <div class="col-md-6">
-                    <label for="lieu_deces" class="form-label">Lieu de décès *</label>
+                    <label for="lieu_deces" class="form-label">Lieu de décès <span style="color:red">*</label>
                     <input type="text" class="form-control @error('lieu_deces') is-invalid @enderror" 
                            id="lieu_deces" name="lieu_deces" 
                            value="{{ old('lieu_deces') }}" required>
@@ -104,7 +104,7 @@ Main hero START -->
 
                 <!-- Informations sur l'acte -->
                 <div class="col-md-6">
-                    <label for="numero_acte" class="form-label">Numéro d'acte *</label>
+                    <label for="numero_acte" class="form-label">Numéro d'acte <span style="color:red">*</label>
                     <input type="text" class="form-control @error('numero_acte') is-invalid @enderror" 
                            id="numero_acte" name="numero_acte" 
                            value="{{ old('numero_acte') }}" required>
@@ -114,7 +114,7 @@ Main hero START -->
                 </div>
 
                 <div class="col-md-6">
-                    <label for="date_acte" class="form-label">Date de l'acte *</label>
+                    <label for="date_acte" class="form-label">Date de l'acte <span style="color:red">*</label>
                     <input type="date" class="form-control @error('date_acte') is-invalid @enderror" 
                            id="date_acte" name="date_acte" 
                            value="{{ old('date_acte') }}" required>
@@ -125,7 +125,7 @@ Main hero START -->
 
                 <!-- Nombre de copies -->
                 <div class="col-md-6">
-                    <label for="nombre_copie" class="form-label">Nombre de copies *</label>
+                    <label for="nombre_copie" class="form-label">Nombre de copies <span style="color:red">*</label>
                     <select class="form-select @error('nombre_copie') is-invalid @enderror" 
                             id="nombre_copie" name="nombre_copie" required>
                         @for($i = 1; $i <= 5; $i++)
@@ -141,7 +141,7 @@ Main hero START -->
 
                 <!-- Cause du décès -->
                 <div class="col-md-6">
-                    <label for="cause_deces" class="form-label">Cause du décès</label>
+                    <label for="cause_deces" class="form-label">Cause du décès <span style="color:red">*</label>
                     <input type="text" class="form-control @error('cause_deces') is-invalid @enderror" 
                            id="cause_deces" name="cause_deces" 
                            value="{{ old('cause_deces') }}">

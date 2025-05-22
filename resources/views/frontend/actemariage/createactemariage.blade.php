@@ -63,7 +63,7 @@ Main hero START -->
                                 <h4 class="mb-3">Informations sur l'époux</h4>
                                 <div class="row mb-3">
                                     <div class="col-md-4">
-                                        <label for="nom_epoux" class="form-label">Nom *</label>
+                                        <label for="nom_epoux" class="form-label">Nom <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('nom_epoux') is-invalid @enderror" 
                                             id="nom_epoux" name="nom_epoux" value="{{ old('nom_epoux') }}" required>
                                         @error('nom_epoux')
@@ -73,7 +73,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="prenom_epoux" class="form-label">Prénom *</label>
+                                        <label for="prenom_epoux" class="form-label">Prénoms <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('prenom_epoux') is-invalid @enderror" 
                                             id="prenom_epoux" name="prenom_epoux" value="{{ old('prenom_epoux') }}" required>
                                         @error('prenom_epoux')
@@ -83,7 +83,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="date_naissance_epoux" class="form-label">Date de naissance *</label>
+                                        <label for="date_naissance_epoux" class="form-label">Date de naissance <span style="color:red">*</label>
                                         <input type="date" class="form-control @error('date_naissance_epoux') is-invalid @enderror" 
                                             id="date_naissance_epoux" name="date_naissance_epoux" value="{{ old('date_naissance_epoux') }}" required>
                                         @error('date_naissance_epoux')
@@ -96,7 +96,7 @@ Main hero START -->
         
                                 <div class="row mb-3">
                                     <div class="col-md-4">
-                                        <label for="lieu_naissance_epoux" class="form-label">Lieu de naissance *</label>
+                                        <label for="lieu_naissance_epoux" class="form-label">Lieu de naissance <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('lieu_naissance_epoux') is-invalid @enderror" 
                                             id="lieu_naissance_epoux" name="lieu_naissance_epoux" value="{{ old('lieu_naissance_epoux') }}" required>
                                         @error('lieu_naissance_epoux')
@@ -106,7 +106,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="numero_cni_epoux" class="form-label">Numéro CNI *</label>
+                                        <label for="numero_cni_epoux" class="form-label">Numéro CNI <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('numero_cni_epoux') is-invalid @enderror" 
                                             id="numero_cni_epoux" name="numero_cni_epoux" value="{{ old('numero_cni_epoux') }}" required>
                                         @error('numero_cni_epoux')
@@ -116,7 +116,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="profession_epoux" class="form-label">Profession *</label>
+                                        <label for="profession_epoux" class="form-label">Profession <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('profession_epoux') is-invalid @enderror" 
                                             id="profession_epoux" name="profession_epoux" value="{{ old('profession_epoux') }}" required>
                                         @error('profession_epoux')
@@ -129,7 +129,7 @@ Main hero START -->
         
                                 <div class="row mb-3">
                                     <div class="col-md-12">
-                                        <label for="domicile_epoux" class="form-label">Adresse complète *</label>
+                                        <label for="domicile_epoux" class="form-label">Adresse complète <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('domicile_epoux') is-invalid @enderror" 
                                             id="domicile_epoux" name="domicile_epoux" value="{{ old('domicile_epoux') }}" required>
                                         @error('domicile_epoux')
@@ -144,7 +144,7 @@ Main hero START -->
                                 <h4 class="mb-3 mt-5">Informations sur l'épouse</h4>
                                 <div class="row mb-3">
                                     <div class="col-md-4">
-                                        <label for="nom_epouse" class="form-label">Nom *</label>
+                                        <label for="nom_epouse" class="form-label">Nom <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('nom_epouse') is-invalid @enderror" 
                                             id="nom_epouse" name="nom_epouse" value="{{ old('nom_epouse') }}" required>
                                         @error('nom_epouse')
@@ -154,7 +154,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="prenom_epouse" class="form-label">Prénom *</label>
+                                        <label for="prenom_epouse" class="form-label">Prénom <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('prenom_epouse') is-invalid @enderror" 
                                             id="prenom_epouse" name="prenom_epouse" value="{{ old('prenom_epouse') }}" required>
                                         @error('prenom_epouse')
@@ -164,7 +164,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="date_naissance_epouse" class="form-label">Date de naissance *</label>
+                                        <label for="date_naissance_epouse" class="form-label">Date de naissance <span style="color:red">*</label>
                                         <input type="date" class="form-control @error('date_naissance_epouse') is-invalid @enderror" 
                                             id="date_naissance_epouse" name="date_naissance_epouse" value="{{ old('date_naissance_epouse') }}" required>
                                         @error('date_naissance_epouse')
@@ -177,7 +177,7 @@ Main hero START -->
         
                                 <div class="row mb-3">
                                     <div class="col-md-4">
-                                        <label for="lieu_naissance_epouse" class="form-label">Lieu de naissance *</label>
+                                        <label for="lieu_naissance_epouse" class="form-label">Lieu de naissance <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('lieu_naissance_epouse') is-invalid @enderror" 
                                             id="lieu_naissance_epouse" name="lieu_naissance_epouse" value="{{ old('lieu_naissance_epouse') }}" required>
                                         @error('lieu_naissance_epouse')
@@ -187,7 +187,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="numero_cni_epouse" class="form-label">Numéro CNI *</label>
+                                        <label for="numero_cni_epouse" class="form-label">Numéro CNI <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('numero_cni_epouse') is-invalid @enderror" 
                                             id="numero_cni_epouse" name="numero_cni_epouse" value="{{ old('numero_cni_epouse') }}" required>
                                         @error('numero_cni_epouse')
@@ -197,7 +197,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="profession_epouse" class="form-label">Profession *</label>
+                                        <label for="profession_epouse" class="form-label">Profession <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('profession_epouse') is-invalid @enderror" 
                                             id="profession_epouse" name="profession_epouse" value="{{ old('profession_epouse') }}" required>
                                         @error('profession_epouse')
@@ -210,7 +210,7 @@ Main hero START -->
         
                                 <div class="row mb-3">
                                     <div class="col-md-12">
-                                        <label for="domicile_epouse" class="form-label">Adresse complète *</label>
+                                        <label for="domicile_epouse" class="form-label">Adresse complète <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('domicile_epouse') is-invalid @enderror" 
                                             id="domicile_epouse" name="domicile_epouse" value="{{ old('domicile_epouse') }}" required>
                                         @error('domicile_epouse')
@@ -225,7 +225,7 @@ Main hero START -->
                                 <h4 class="mb-3 mt-5">Informations sur le mariage</h4>
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="date_mariage" class="form-label">Date du mariage *</label>
+                                        <label for="date_mariage" class="form-label">Date du mariage <span style="color:red">*</label>
                                         <input type="date" class="form-control @error('date_mariage') is-invalid @enderror" 
                                             id="date_mariage" name="date_mariage" value="{{ old('date_mariage') }}" required>
                                         @error('date_mariage')
@@ -235,7 +235,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="lieu_mariage" class="form-label">Lieu du mariage *</label>
+                                        <label for="lieu_mariage" class="form-label">Lieu du mariage <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('lieu_mariage') is-invalid @enderror" 
                                             id="lieu_mariage" name="lieu_mariage" value="{{ old('lieu_mariage') }}" required>
                                         @error('lieu_mariage')
@@ -249,7 +249,7 @@ Main hero START -->
                                 <!-- Localité -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="type_localite" class="form-label">Type de localité *</label>
+                                        <label for="type_localite" class="form-label">Type de localité <span style="color:red">*</label>
                                         <select class="form-select @error('type_localite') is-invalid @enderror" 
                                                 id="type_localite" name="type_localite" required>
                                             <option value="" disabled selected>Choisir...</option>
@@ -266,7 +266,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="localite_id" class="form-label">Localité *</label>
+                                        <label for="localite_id" class="form-label">Localité <span style="color:red">*</label>
                                         <select class="form-select @error('localite_id') is-invalid @enderror" 
                                                 id="localite_id" name="localite_id" required>
                                             <option value="" disabled selected>Choisir d'abord le type</option>
@@ -285,7 +285,7 @@ Main hero START -->
                                     <div class="col-md-6">
                                         <h5>Témoin 1</h5>
                                         <div class="mb-3">
-                                            <label for="nom_temoin1" class="form-label">Nom *</label>
+                                            <label for="nom_temoin1" class="form-label">Nom <span style="color:red">*</label>
                                             <input type="text" class="form-control @error('nom_temoin1') is-invalid @enderror" 
                                                 id="nom_temoin1" name="nom_temoin1" value="{{ old('nom_temoin1') }}" required>
                                             @error('nom_temoin1')
@@ -295,7 +295,7 @@ Main hero START -->
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="prenom_temoin1" class="form-label">Prénom *</label>
+                                            <label for="prenom_temoin1" class="form-label">Prénoms <span style="color:red">*</label>
                                             <input type="text" class="form-control @error('prenom_temoin1') is-invalid @enderror" 
                                                 id="prenom_temoin1" name="prenom_temoin1" value="{{ old('prenom_temoin1') }}" required>
                                             @error('prenom_temoin1')
@@ -305,7 +305,7 @@ Main hero START -->
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="numero_cni_temoin1" class="form-label">Numéro CNI *</label>
+                                            <label for="numero_cni_temoin1" class="form-label">Numéro CNI <span style="color:red">*</label>
                                             <input type="text" class="form-control @error('numero_cni_temoin1') is-invalid @enderror" 
                                                 id="numero_cni_temoin1" name="numero_cni_temoin1" value="{{ old('numero_cni_temoin1') }}" required>
                                             @error('numero_cni_temoin1')
@@ -318,7 +318,7 @@ Main hero START -->
                                     <div class="col-md-6">
                                         <h5>Témoin 2</h5>
                                         <div class="mb-3">
-                                            <label for="nom_temoin2" class="form-label">Nom *</label>
+                                            <label for="nom_temoin2" class="form-label">Nom <span style="color:red">*</label>
                                             <input type="text" class="form-control @error('nom_temoin2') is-invalid @enderror" 
                                                 id="nom_temoin2" name="nom_temoin2" value="{{ old('nom_temoin2') }}" required>
                                             @error('nom_temoin2')
@@ -328,7 +328,7 @@ Main hero START -->
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="prenom_temoin2" class="form-label">Prénom *</label>
+                                            <label for="prenom_temoin2" class="form-label">Prénoms <span style="color:red">*</label>
                                             <input type="text" class="form-control @error('prenom_temoin2') is-invalid @enderror" 
                                                 id="prenom_temoin2" name="prenom_temoin2" value="{{ old('prenom_temoin2') }}" required>
                                             @error('prenom_temoin2')
@@ -338,7 +338,7 @@ Main hero START -->
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="numero_cni_temoin2" class="form-label">Numéro CNI *</label>
+                                            <label for="numero_cni_temoin2" class="form-label">Numéro CNI <span style="color:red">*</label>
                                             <input type="text" class="form-control @error('numero_cni_temoin2') is-invalid @enderror" 
                                                 id="numero_cni_temoin2" name="numero_cni_temoin2" value="{{ old('numero_cni_temoin2') }}" required>
                                             @error('numero_cni_temoin2')
@@ -354,7 +354,7 @@ Main hero START -->
                                 <h4 class="mb-3 mt-5">Documents requis</h4>
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="extrait_naissance_epoux" class="form-label">Extrait de naissance époux *</label>
+                                        <label for="extrait_naissance_epoux" class="form-label">Extrait de naissance époux <span style="color:red">*</label>
                                         <input type="file" class="form-control @error('extrait_naissance_epoux') is-invalid @enderror" 
                                             id="extrait_naissance_epoux" name="extrait_naissance_epoux" required>
                                         @error('extrait_naissance_epoux')
@@ -365,7 +365,7 @@ Main hero START -->
                                         <small class="text-muted">Document de moins de 3 mois</small>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="extrait_naissance_epouse" class="form-label">Extrait de naissance épouse *</label>
+                                        <label for="extrait_naissance_epouse" class="form-label">Extrait de naissance épouse <span style="color:red">*</label>
                                         <input type="file" class="form-control @error('extrait_naissance_epouse') is-invalid @enderror" 
                                             id="extrait_naissance_epouse" name="extrait_naissance_epouse" required>
                                         @error('extrait_naissance_epouse')
@@ -379,7 +379,7 @@ Main hero START -->
         
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="photo_epoux" class="form-label">Photo d'identité époux *</label>
+                                        <label for="photo_epoux" class="form-label">Photo d'identité époux <span style="color:red">*</label>
                                         <input type="file" class="form-control @error('photo_epoux') is-invalid @enderror" 
                                             id="photo_epoux" name="photo_epoux" required>
                                         @error('photo_epoux')
@@ -389,7 +389,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="photo_epouse" class="form-label">Photo d'identité épouse *</label>
+                                        <label for="photo_epouse" class="form-label">Photo d'identité épouse <span style="color:red">*</label>
                                         <input type="file" class="form-control @error('photo_epouse') is-invalid @enderror" 
                                             id="photo_epouse" name="photo_epouse" required>
                                         @error('photo_epouse')
@@ -402,7 +402,7 @@ Main hero START -->
         
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="certificat_residence_epoux" class="form-label">Certificat de résidence époux *</label>
+                                        <label for="certificat_residence_epoux" class="form-label">Certificat de résidence époux <span style="color:red">*</label>
                                         <input type="file" class="form-control @error('certificat_residence_epoux') is-invalid @enderror" 
                                             id="certificat_residence_epoux" name="certificat_residence_epoux" required>
                                         @error('certificat_residence_epoux')
@@ -412,7 +412,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="certificat_residence_epouse" class="form-label">Certificat de résidence épouse *</label>
+                                        <label for="certificat_residence_epouse" class="form-label">Certificat de résidence épouse <span style="color:red">*</label>
                                         <input type="file" class="form-control @error('certificat_residence_epouse') is-invalid @enderror" 
                                             id="certificat_residence_epouse" name="certificat_residence_epouse" required>
                                         @error('certificat_residence_epouse')

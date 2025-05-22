@@ -62,7 +62,7 @@ Main hero START -->
                                 <!-- Informations sur le déclarant -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="nom_declarant" class="form-label">Nom du déclarant *</label>
+                                        <label for="nom_declarant" class="form-label">Nom du déclarant <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('nom_declarant') is-invalid @enderror" 
                                             id="nom_declarant" name="nom_declarant" value="{{ old('nom_declarant') }}" required>
                                         @error('nom_declarant')
@@ -72,7 +72,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="prenom_declarant" class="form-label">Prénom du déclarant *</label>
+                                        <label for="prenom_declarant" class="form-label">Prénom du déclarant <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('prenom_declarant') is-invalid @enderror" 
                                             id="prenom_declarant" name="prenom_declarant" value="{{ old('prenom_declarant') }}" required>
                                         @error('prenom_declarant')
@@ -86,7 +86,7 @@ Main hero START -->
                                 <!-- Informations sur le défunt -->
                                 <div class="row mb-3">
                                     <div class="col-md-4">
-                                        <label for="nom_defunt" class="form-label">Nom du défunt *</label>
+                                        <label for="nom_defunt" class="form-label">Nom du défunt <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('nom_defunt') is-invalid @enderror" 
                                             id="nom_defunt" name="nom_defunt" value="{{ old('nom_defunt') }}" required>
                                         @error('nom_defunt')
@@ -96,7 +96,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="prenom_defunt" class="form-label">Prénom du défunt *</label>
+                                        <label for="prenom_defunt" class="form-label">Prénom du défunt <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('prenom_defunt') is-invalid @enderror" 
                                             id="prenom_defunt" name="prenom_defunt" value="{{ old('prenom_defunt') }}" required>
                                         @error('prenom_defunt')
@@ -106,7 +106,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="date_deces" class="form-label">Date de décès *</label>
+                                        <label for="date_deces" class="form-label">Date de décès <span style="color:red">*</label>
                                         <input type="date" class="form-control @error('date_deces') is-invalid @enderror" 
                                             id="date_deces" name="date_deces" value="{{ old('date_deces') }}" required>
                                         @error('date_deces')
@@ -120,7 +120,7 @@ Main hero START -->
                                 <!-- Lieu de décès et localité -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="lieu_deces" class="form-label">Lieu de décès *</label>
+                                        <label for="lieu_deces" class="form-label">Lieu de décès <span style="color:red">*</label>
                                         <input type="text" class="form-control @error('lieu_deces') is-invalid @enderror" 
                                             id="lieu_deces" name="lieu_deces" value="{{ old('lieu_deces') }}" required>
                                         @error('lieu_deces')
@@ -130,7 +130,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="date_acte" class="form-label">Date de l'acte *</label>
+                                        <label for="date_acte" class="form-label">Date de l'acte <span style="color:red">*</label>
                                         <input type="date" class="form-control @error('date_acte') is-invalid @enderror" 
                                             id="date_acte" name="date_acte" value="{{ old('date_acte', now()->format('Y-m-d')) }}" required>
                                         @error('date_acte')
@@ -144,7 +144,7 @@ Main hero START -->
                                 <!-- Type de localité et localité -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="type_localite" class="form-label">Type de localité *</label>
+                                        <label for="type_localite" class="form-label">Type de localité <span style="color:red">*</label>
                                         <select class="form-select @error('type_localite') is-invalid @enderror" 
                                                 id="type_localite" name="type_localite" required>
                                             <option value="" disabled selected>Choisir...</option>
@@ -161,7 +161,7 @@ Main hero START -->
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="localite_id" class="form-label">Localité *</label>
+                                        <label for="localite_id" class="form-label">Localité <span style="color:red">*</label>
                                         <select class="form-select @error('localite_id') is-invalid @enderror" 
                                                 id="localite_id" name="localite_id" required>
                                             <option value="" disabled selected>Choisir d'abord le type</option>
@@ -177,7 +177,7 @@ Main hero START -->
                                 <!-- Filiation -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="filiation" class="form-label">Filiation du déclarant *</label>
+                                        <label for="filiation" class="form-label">Filiation du déclarant <span style="color:red">*</label>
                                         <select class="form-select @error('filiation') is-invalid @enderror" 
                                                 id="filiation" name="filiation" required>
                                             <option value="" disabled selected>Choisir...</option>
@@ -201,7 +201,7 @@ Main hero START -->
                                     <div class="col-md-6">
                                         <h5>Informations sur la naissance du défunt</h5>
                                         <div class="mb-3">
-                                            <label for="date_naissance" class="form-label">Date de naissance</label>
+                                            <label for="date_naissance" class="form-label">Date de naissance <span style="color:red">*</label>
                                             <input type="date" class="form-control @error('date_naissance') is-invalid @enderror" 
                                                 id="date_naissance" name="date_naissance" value="{{ old('date_naissance') }}">
                                             @error('date_naissance')
@@ -211,7 +211,7 @@ Main hero START -->
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="lieu_naissance" class="form-label">Lieu de naissance</label>
+                                            <label for="lieu_naissance" class="form-label">Lieu de naissance <span style="color:red">*</label>
                                             <input type="text" class="form-control @error('lieu_naissance') is-invalid @enderror" 
                                                 id="lieu_naissance" name="lieu_naissance" value="{{ old('lieu_naissance') }}">
                                             @error('lieu_naissance')
@@ -225,7 +225,7 @@ Main hero START -->
                                     <div class="col-md-6">
                                         <h5>Informations sur le décès</h5>
                                         <div class="mb-3">
-                                            <label for="cause_deces" class="form-label">Cause du décès</label>
+                                            <label for="cause_deces" class="form-label">Cause du décès <span style="color:red">*</label>
                                             <textarea class="form-control @error('cause_deces') is-invalid @enderror" 
                                                     id="cause_deces" name="cause_deces">{{ old('cause_deces') }}</textarea>
                                             @error('cause_deces')
@@ -235,7 +235,7 @@ Main hero START -->
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="type_parent" class="form-label">Type de parenté</label>
+                                            <label for="type_parent" class="form-label">Type de parenté <span style="color:red">*</label>
                                             <select class="form-select @error('type_parent') is-invalid @enderror" 
                                                 id="type_parent" name="type_parent">
                                                 <option value="" {{ old('type_parent') == '' ? 'selected' : '' }}>Sélectionner un type</option>

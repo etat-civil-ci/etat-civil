@@ -65,7 +65,7 @@ Main hero START -->
 
 
                 <div class="col-md-6">
-                    <label for="date_mariage" class="form-label">Date du mariage *</label>
+                    <label for="date_mariage" class="form-label">Date du mariage <span style="color:red">*</label>
                     <input type="date" class="form-control @error('date_mariage') is-invalid @enderror" 
                            id="date_mariage" name="date_mariage" 
                            value="{{ old('date_mariage') }}" required>
@@ -75,7 +75,7 @@ Main hero START -->
                 </div>
 
                 <div class="col-md-6">
-                    <label for="date_acte" class="form-label">Date de l'acte *</label>
+                    <label for="date_acte" class="form-label">Date de l'acte <span style="color:red">*</label>
                     <input type="date" class="form-control @error('date_acte') is-invalid @enderror" 
                            id="date_acte" name="date_acte" 
                            value="{{ old('date_acte') }}" required>
@@ -85,7 +85,7 @@ Main hero START -->
                 </div>
 
                 <div class="col-md-6">
-                    <label for="numero_acte" class="form-label">Numéro d'acte *</label>
+                    <label for="numero_acte" class="form-label">Numéro d'acte <span style="color:red">*</label>
                     <input type="text" class="form-control @error('numero_acte') is-invalid @enderror" 
                            id="numero_acte" name="numero_acte" 
                            value="{{ old('numero_acte') }}" required>
@@ -95,7 +95,7 @@ Main hero START -->
                 </div>
 
                 <div class="col-md-6">
-                    <label for="nombre_copie" class="form-label">Nombre de copies *</label>
+                    <label for="nombre_copie" class="form-label">Nombre de copies <span style="color:red">*</label>
                     <select class="form-select @error('nombre_copie') is-invalid @enderror" 
                             id="nombre_copie" name="nombre_copie" required>
                         @for($i = 1; $i <= 5; $i++)
