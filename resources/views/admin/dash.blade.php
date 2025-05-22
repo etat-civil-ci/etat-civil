@@ -266,7 +266,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{-- Ajoutez ici les actions pour chaque demande --}}
+                                    <a href="{{ route('demandes.show', $demande->id) }}" class="btn btn-sm btn-info">
+                                        <i class="fas fa-eye"></i> Voir
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

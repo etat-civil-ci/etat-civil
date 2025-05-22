@@ -10,6 +10,7 @@ use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\ActeDecesController;
 use App\Http\Controllers\ActeMariageController;
 
+use App\Http\Controllers\ValidatorDemandeController;
 use App\Http\Controllers\DashboardController;
 
 // Routes principales
@@ -113,5 +114,32 @@ Route::middleware(['auth'])->group(function () {
     // Dashboard
 
     Route::get('/dash', [App\Http\Controllers\DashboardController::class, 'index'])->name('dash');
+    Route::get('/demandes/{demande}', [ValidatorDemandeController::class, 'show'])->name('demandes.show');
+    Route::get('/demandes', [ValidatorDemandeController::class, 'index'])->name('demandes.index');
+    Route::get('/users/{user}', [ValidatorDemandeController::class, 'show'])->name('users.show');
+
+    Route::get('/demandes/{demande}/edit', [ValidatorDemandeController::class, 'edit'])->name('demandes.edit');
+    Route::get('/demandes/{demande}/addnote', [ValidatorDemandeController::class, 'addnote'])->name('demandes.edit');
+
+    // Route pour soumettre la modification d'une demande (méthode PUT/PATCH)
+    Route::put('/demandes/{demande}', [ValidatorDemandeController::class, 'update'])->name('demandes.update');
+
+
+
+// Route pour valider une demande
+Route::post('/demandes/{demande}/valider', [ValidatorDemandeController::class, 'valider'])->name('demandes.valider');
+
+// Route pour rejeter une demande
+Route::post('/demandes/{demande}/rejeter', [ValidatorDemandeController::class, 'rejeter'])->name('demandes.rejeter');
+
+// Route pour télécharger un document
+Route::get('/demandes/{demande}/telecharger', [ValidatorDemandeController::class, 'telecharger'])->name('demandes.telecharger');
+
+// Route pour envoyer un document par email
+Route::get('/demandes/{demande}/envoyer', [ValidatorDemandeController::class, 'envoyer'])->name('demandes.envoyer');
+
+// Route pour ajouter une note à une demande
+Route::post('/demandes/{demande}/addnote', [ValidatorDemandeController::class, 'addNote'])->name('demandes.addnote');
+
 
 });
